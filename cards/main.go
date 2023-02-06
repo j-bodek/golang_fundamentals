@@ -11,6 +11,8 @@ func main() {
 	// cards.saveToFile("deck")
 	cards := newDeckFromFile("deck")
 	cards.print()
+	cards.shuffle()
+	cards.print()
 }
 
 func newCard() string { // after () declare that function return variable type string

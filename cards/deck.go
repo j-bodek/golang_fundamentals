@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"log"
+	"math/rand"
 	"os"
 	"strings"
 )
@@ -32,6 +33,13 @@ func (d deck) toString() string {
 // function used to save deck to file
 func (d deck) saveToFile(filename string) error {
 	return os.WriteFile(filename, []byte(d.toString()), 0666)
+}
+
+// this function is used to shuffle deck
+func (d deck) shuffle() {
+	rand.Shuffle(len(d), func(i int, j int) {
+		d[i], d[j] = d[j], d[i]
+	})
 }
 
 // HELPER FUNCTIONS
