@@ -1,15 +1,21 @@
 package main
 
+import "fmt"
+
 func main() {
 	// declare variable of string type
 	// basic go types: bool, string, int, float64
-	// card := newCard() // shortcut of below line, this declaration works with any types
+	// card := "Ace of Spades" // shortcut of below line, this declaration works with any types
 	// var card string = "Ace of Spades"
 
 	// declare slice of strings
 	cards := newDeck()
-	// print function is declared in deck.go file
-	cards.print()
+	hand, remainingCards := deal(cards, 5)
+	// // print function is declared in deck.go file
+	fmt.Println("\nHand cards:\n")
+	hand.print()
+	fmt.Println("\nRemaining cards:\n")
+	remainingCards.print()
 }
 
 func newCard() string { // after () declare that function return variable type string
