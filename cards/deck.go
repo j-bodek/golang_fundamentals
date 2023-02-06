@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 // Create new deck type
 // which is a slice of strings
@@ -14,6 +17,12 @@ func (d deck) print() { // (d deck) tells go that print function belongs to deck
 	for i, card := range d {
 		fmt.Println(i, card)
 	}
+}
+
+// function that converts deck type variable into string
+func (d deck) toString() string {
+	// first argument has to be slice of strings
+	return strings.Join([]string(d), ",")
 }
 
 func newDeck() deck {

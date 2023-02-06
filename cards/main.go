@@ -10,12 +10,7 @@ func main() {
 
 	// declare slice of strings
 	cards := newDeck()
-	hand, remainingCards := deal(cards, 5)
-	// // print function is declared in deck.go file
-	fmt.Println("\nHand cards:\n")
-	hand.print()
-	fmt.Println("\nRemaining cards:\n")
-	remainingCards.print()
+	fmt.Println(cards.toString())
 }
 
 func newCard() string { // after () declare that function return variable type string
