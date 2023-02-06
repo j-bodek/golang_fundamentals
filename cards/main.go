@@ -7,9 +7,7 @@ func main() {
 	// var card string = "Ace of Spades"
 
 	// declare slice of strings
-	cards := deck{"Ace of Spades", newCard()}
-	// append new value to cards (notice that append returns new slice)
-	cards = append(cards, "Six of Spades")
+	cards := newDeck()
 	// print function is declared in deck.go file
 	cards.print()
 }
