@@ -1,7 +1,5 @@
 package main
 
-import "fmt"
-
 func main() {
 	// declare variable of string type
 	// basic go types: bool, string, int, float64
@@ -10,7 +8,7 @@ func main() {
 
 	// declare slice of strings
 	cards := newDeck()
-	fmt.Println(cards.toString())
+	cards.saveToFile("deck.txt")
 }
 
 func newCard() string { // after () declare that function return variable type string

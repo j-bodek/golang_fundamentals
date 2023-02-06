@@ -2,12 +2,15 @@ package main
 
 import (
 	"fmt"
+	"os"
 	"strings"
 )
 
 // Create new deck type
 // which is a slice of strings
 type deck []string // tell that deck 'inherit' from string
+
+// DECK METHODS
 
 // declare new function that belongs to deck type
 // deck is 'receiver' so any variable of type deck has access to print method
@@ -24,6 +27,13 @@ func (d deck) toString() string {
 	// first argument has to be slice of strings
 	return strings.Join([]string(d), ",")
 }
+
+// function used to save deck to file
+func (d deck) saveToFile(filename string) error {
+	return os.WriteFile(filename, []byte(d.toString()), 0666)
+}
+
+// HELPER FUNCTIONS
 
 func newDeck() deck {
 	cards := deck{}
