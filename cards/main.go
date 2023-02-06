@@ -7,8 +7,10 @@ func main() {
 	// var card string = "Ace of Spades"
 
 	// declare slice of strings
-	cards := newDeck()
-	cards.saveToFile("deck.txt")
+	// cards := newDeck()
+	// cards.saveToFile("deck")
+	cards := newDeckFromFile("deck")
+	cards.print()
 }
 
 func newCard() string { // after () declare that function return variable type string

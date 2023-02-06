@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"os"
 	"strings"
 )
@@ -51,6 +52,23 @@ func newDeck() deck {
 
 	// return cards
 	return cards
+}
+
+// function that create new deck from file
+func newDeckFromFile(filename string) deck {
+	data, err := os.ReadFile(filename)
+
+	// check if no error (nil is like None in python)
+	if err != nil {
+		// Option #1 - log the error and return a call to newDeck()
+		// Option #2 - log the error and entirely quit the program
+
+		// Option #2:
+		// log.Fatal works like Print followed by os.Exit
+		log.Fatal(err)
+	}
+
+	return deck(strings.Split(string(data), ","))
 }
 
 // declare deal function that takes two arguments:
