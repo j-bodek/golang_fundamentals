@@ -3,7 +3,7 @@ package main
 import "fmt"
 
 // create bot interface (every type that implement getGreeting method
-// will be 'included' as type bot)
+// will be 'included' as type bot), something like python Protocol class
 type bot interface {
 	getGreeting() string
 }
