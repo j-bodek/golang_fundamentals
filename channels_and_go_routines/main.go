@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"net/http"
+	"time"
 )
 
 func main() {
@@ -25,20 +26,24 @@ func main() {
 		go checkLink(link, c) // pass channel to checkLink
 	}
 
-	for i := 0; i < len(websites); i++ {
-		fmt.Println(<-c)
+	// listen for messages from channels (similar like asyncio look in python)
+	for link := range c {
+		// run checkLink as function literal (function literal == python lambda function)
+		go func(l string) {
+			time.Sleep(2 * time.Second)
+			checkLink(l, c)
+		}(link)
 	}
 }
 
 // function used to check if link returns error after get request
 func checkLink(link string, c chan string) {
 	_, err := http.Get(link)
-
 	if err != nil {
 		fmt.Printf("Something wrong with '%s' %s\n\n", link, err)
-		c <- "something went wrong"
+		c <- link
 	} else {
 		fmt.Printf("'%s' is up\n\n", link)
-		c <- "website is up"
+		c <- link
 	}
 }
